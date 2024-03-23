@@ -1,0 +1,6 @@
+.vscode/
+.idea/
+
+build/
+cmake-build-relwithdebinfo-visual-studio/
+CMakeFiles/
