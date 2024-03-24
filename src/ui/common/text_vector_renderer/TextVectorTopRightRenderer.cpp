@@ -37,14 +37,11 @@ void TextVectorRenderer::TextVectorTopRightRenderer(ScreenView *screenView, Mine
             static_cast<float>(data.size()) * 10 + static_cast<float>(offset) * 3
     );
 
-    uiRenderContext->drawRectangle(
+    uiRenderContext->fillRectangle(
             &bg_area,
             &color,
-            UiConfig::background_color_alpha,
-            1
+            UiConfig::background_color_alpha
     );
-
-    Log::Info("COOL!");
 
     for (int i = 0; i < data.size(); ++i) {
         if (data[i].empty()){

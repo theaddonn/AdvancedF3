@@ -37,11 +37,10 @@ void TextVectorRenderer::TextVectorTopLeftRenderer(ScreenView *screenView, Minec
             static_cast<float>(data.size()) * 10 + offset * 3
     );
 
-    uiRenderContext->drawRectangle(
+    uiRenderContext->fillRectangle(
             &bg_area,
             &color,
-            UiConfig::background_color_alpha,
-            0
+            UiConfig::background_color_alpha
     );
 
     for (int i = 0; i < data.size(); ++i) {
@@ -64,6 +63,6 @@ void TextVectorRenderer::TextVectorTopLeftRenderer(ScreenView *screenView, Minec
                 ui::TextAlignment::Left,
                 &textMeasureData,
                 &caretMeasureData
-        );
+                );
     }
 }

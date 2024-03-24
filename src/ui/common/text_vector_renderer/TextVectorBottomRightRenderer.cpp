@@ -39,11 +39,10 @@ void TextVectorRenderer::TextVectorBottomRightRenderer(ScreenView *screenView, M
             uiScreenSize.y - static_cast<float>(offset)
     );
 
-    uiRenderContext->drawRectangle(
+    uiRenderContext->fillRectangle(
             &bg_area,
             &color,
-            UiConfig::background_color_alpha,
-            1
+            UiConfig::background_color_alpha
     );
 
     for (int i = 0; i < data.size(); ++i) {
