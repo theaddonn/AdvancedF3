@@ -3,6 +3,7 @@
 #include "ui/f3/f3Renderer.h"
 
 bool f3_open = true;
+AmethystContext* amethystContext = nullptr;
 
 // Ran when the mod is loaded into the game by AmethystRuntime
 ModFunction void Initialize(AmethystContext* ctx)
@@ -11,6 +12,8 @@ ModFunction void Initialize(AmethystContext* ctx)
     // https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
     //ctx->mInputManager.RegisterNewInput("use_f3", 0x72, true);
     //ctx->mInputManager.("use_f3", &onUseF3);
+
+    amethystContext = ctx;
 
     // Add a listener to a built-in amethyst event
     //eventManager->onRenderUI.AddListener(&onRenderUi);
@@ -23,7 +26,7 @@ ModFunction void Initialize(AmethystContext* ctx)
 void onRenderUi(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext)
 {
     if (screenView->visualTree->mRootControlName->layerName == "hud_screen" && f3_open) {
-        f3Renderer::Renderer(screenView, uiRenderContext);
+        f3Renderer::Renderer(screenView, uiRenderContext, amethystContext);
     }
 }
 

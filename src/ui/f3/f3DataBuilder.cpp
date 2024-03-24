@@ -5,7 +5,7 @@
 #include "f3DataBuilder.h"
 #include "../../recorder/ps_recorder/psRecorder.h"
 
-std::vector<std::string> f3DataBuilder::BuildInfoData(ClientInstance *clientInstance) {
+std::vector<std::string> f3DataBuilder::BuildInfoData(ClientInstance *clientInstance, AmethystContext* amethystContext) {
     std::vector<std::string> data;
 
     Vec3* playerPos = clientInstance->getLocalPlayer()->getPosition();
@@ -26,7 +26,7 @@ std::vector<std::string> f3DataBuilder::BuildInfoData(ClientInstance *clientInst
     else if (cardinalRot >= 135.0f && cardinalRot < 225.0f) direction = "South (Towards positive Z)";
     else direction = "West (Towards negative X)";
 
-    data.emplace_back(std::format("Minecraft Version: 1.20.51.1"));
+    data.emplace_back(std::format("Minecraft Version: {}",amethystContext->mMinecraftPackageInfo.mVersion.mFullVersionString));
     data.emplace_back(std::format("Amethyst Version: 1.2.0"));
     data.emplace_back("");
     data.emplace_back(std::format("TPS: {:.2f}", tpsFpsUps.x));

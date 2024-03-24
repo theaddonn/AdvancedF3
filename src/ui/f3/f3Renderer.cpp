@@ -5,8 +5,6 @@
 #include "f3Renderer.h"
 #include "f3DataBuilder.h"
 #include "../common/text_vector_renderer/TextVectorRenderer.h"
-#include "../common/api_extension_renderer/SimpleLineRenderer.h"
-#include "../../recorder/ps_recorder/psRecorder.h"
 #include <vector>
 
 std::vector<std::string> info_data;
@@ -14,7 +12,7 @@ std::vector<std::string> control_data;
 
 int cycle = 0;
 
-void f3Renderer::Renderer(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext) {
+void f3Renderer::Renderer(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext, AmethystContext* amethystContext) {
     cycle++;
     ClientInstance* clientInstance = uiRenderContext->mClient;
 
@@ -25,7 +23,7 @@ void f3Renderer::Renderer(ScreenView* screenView, MinecraftUIRenderContext* uiRe
         cycle = 0;
 
         info_data.clear();
-        info_data = f3DataBuilder::BuildInfoData(clientInstance);
+        info_data = f3DataBuilder::BuildInfoData(clientInstance, amethystContext);
 
         control_data.clear();
         control_data = f3DataBuilder::BuildControlData(clientInstance);
