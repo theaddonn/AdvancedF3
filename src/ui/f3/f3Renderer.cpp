@@ -42,7 +42,7 @@ void f3Renderer::Renderer(ScreenView* screenView, MinecraftUIRenderContext* uiRe
             "§byou get free diamonds."
     };
 
-    Vec2 uiScreenSize = clientInstance->guiData->clientScreenSize;
+    Vec2 uiScreenSize = clientInstance->guiData->clientUIScreenSize;
 
     TextVectorRenderer::TextVectorTopLeftRenderer(screenView, uiRenderContext, info_data, uiScreenSize);
     TextVectorRenderer::TextVectorTopRightRenderer(screenView, uiRenderContext, control_data, uiScreenSize);
