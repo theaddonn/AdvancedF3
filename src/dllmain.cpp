@@ -8,7 +8,6 @@ F3Renderer* F3 = nullptr;
 // Ran when the mod is loaded into the game by AmethystRuntime
 ModFunction void Initialize(AmethystContext* ctx)
 {
-    Log::Info("BF IN");
     // Add a listener to key inputs for opening the f3 screen
     // https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
     //ctx->mInputManager.RegisterNewInput("use_f3", 0x72, true);
