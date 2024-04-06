@@ -32,19 +32,6 @@ void TextVectorRenderer::TextVectorBottomLeftRenderer(ScreenView *screenView, Mi
             false
     );
 
-    auto bg_area = RectangleArea(
-            static_cast<float>(offset),
-            targetStringSize * 5 + static_cast<float>(offset) * 3,
-            uiScreenSize.y - height - (static_cast<float>(offset) * 3),
-            uiScreenSize.y - static_cast<float>(offset)
-    );
-
-    uiRenderContext->fillRectangle(
-            &bg_area,
-            &color,
-            UiConfig::background_color_alpha
-    );
-
     for (int i = 0; i < data.size(); ++i) {
         if (data[i].empty()){
             continue;
@@ -61,7 +48,7 @@ void TextVectorRenderer::TextVectorBottomLeftRenderer(ScreenView *screenView, Mi
                 &area,
                 &data[i],
                 &mce::Color::WHITE,
-                0.75f,
+                1.0f,
                 ui::TextAlignment::Left,
                 &textMeasureData,
                 &caretMeasureData

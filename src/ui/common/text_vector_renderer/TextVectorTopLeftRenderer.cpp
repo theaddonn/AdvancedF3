@@ -9,14 +9,6 @@ void TextVectorRenderer::TextVectorTopLeftRenderer(ScreenView *screenView, Minec
     int offset = UiConfig::offset;
     mce::Color color = UiConfig::background_color;
 
-    float targetStringSize = 0;
-
-    for (const auto & i : data) {
-        if (static_cast<float>(i.length()) > targetStringSize ){
-            targetStringSize = static_cast<float>(i.length());
-        }
-    }
-
     auto textMeasureData = TextMeasureData(
             1.0f,
             1,
@@ -28,19 +20,6 @@ void TextVectorRenderer::TextVectorTopLeftRenderer(ScreenView *screenView, Minec
     auto caretMeasureData = CaretMeasureData(
             1,
             false
-    );
-
-    auto bg_area = RectangleArea(
-            static_cast<float>(offset),
-            targetStringSize * 5 + offset * 2,
-            static_cast<float>(offset),
-            static_cast<float>(data.size()) * 10 + offset * 3
-    );
-
-    uiRenderContext->fillRectangle(
-            &bg_area,
-            &color,
-            UiConfig::background_color_alpha
     );
 
     for (int i = 0; i < data.size(); ++i) {
@@ -59,7 +38,7 @@ void TextVectorRenderer::TextVectorTopLeftRenderer(ScreenView *screenView, Minec
                 &area,
                 &data[i],
                 &mce::Color::WHITE,
-                0.75f,
+                1,
                 ui::TextAlignment::Left,
                 &textMeasureData,
                 &caretMeasureData
