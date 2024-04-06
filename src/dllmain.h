@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include <amethyst/runtime/AmethystContext.h>
+#include <amethyst/runtime/AmethystContext.hpp>
 
 #include <iomanip>
 #include <iostream>
@@ -12,7 +12,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
-void onRenderUi(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext);
+void afterRenderUI(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext);
 void onUpdate();
 
 void onUseF3(FocusImpact focus, IClientInstance clientInstance);

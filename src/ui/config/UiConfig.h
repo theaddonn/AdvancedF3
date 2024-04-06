@@ -3,9 +3,9 @@
 //
 #pragma once
 #include <Windows.h>
-#include <amethyst/runtime/events/EventManager.h>
-#include <amethyst/runtime/HookManager.h>
-#include <amethyst/runtime/input/InputManager.h>
+#include <amethyst/runtime/events/EventManager.hpp>
+#include <amethyst/runtime/HookManager.hpp>
+#include <amethyst/runtime/input/InputManager.hpp>
 
 // Standardized params for rendering graphics
 
