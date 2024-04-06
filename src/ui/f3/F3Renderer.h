@@ -2,24 +2,35 @@
 // Created by Adrian on 11/02/2024.
 //
 #pragma once
-#include <Windows.h>
-#include <amethyst/runtime/events/EventManager.h>
-#include <amethyst/runtime/HookManager.h>
-#include <amethyst/runtime/input/InputManager.h>
-#include <amethyst/runtime/AmethystContext.h>
-#include "../../data/tps/TpsHandler.h"
-#include "../../data/fps/FpsHandler.h"
-#include "../../data/ups/UpsHandler.h"
+#include <amethyst/runtime/events/EventManager.hpp>
+#include <amethyst/runtime/HookManager.hpp>
+#include <amethyst/runtime/input/InputManager.hpp>
+#include <amethyst/runtime/AmethystContext.hpp>
+#include "../../per_tick//PerTickHandler.h"
+#include "F3State.h"
 
 class F3Renderer{
 private:
-    FpsHandler* mFpsHandler = nullptr;
-    TpsHandler* mTpsHandler = nullptr;
-    UpsHandler* mUpsHandler = nullptr;
+    AmethystContext* mAmethystContext = nullptr;
+
+    PerTickHandler* mFpsHandler = nullptr;
+    PerTickHandler* mTpsHandler = nullptr;
+    PerTickHandler* mUpsHandler = nullptr;
+
 public:
-    void render(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext, AmethystContext* amethystContext);
+    F3State mState = F3State::Basic;
+
+public:
+    F3Renderer(AmethystContext* amethystContext);
+
+    void render(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext);
 
     void onRender();
     void onTick();
     void onUpdate();
+
+private:
+    void _renderBasic(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext, Vec2 uiScreenSize);
+    void _renderModInfo(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext, Vec2 uiScreenSize);
+    void _renderDimensionInfo(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext, Vec2 uiScreenSize);
 };
