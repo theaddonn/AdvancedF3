@@ -4,7 +4,7 @@
 
 #include "F3DataBuilder.h"
 
-std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInstance, AmethystContext* amethystContext, FpsHandler* fpsHandler, TpsHandler* tpsHandler, UpsHandler* upsHandler) {
+std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInstance, AmethystContext* amethystContext, PerTickHandler* fpsHandler, PerTickHandler* tpsHandler, PerTickHandler* upsHandler) {
     std::vector<std::string> data;
 
     Vec3* playerPos = clientInstance->getLocalPlayer()->getPosition();
@@ -26,9 +26,9 @@ std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInst
     data.emplace_back(fmt::format("Minecraft Version: {}",amethystContext->mMinecraftPackageInfo.mVersion.mFullVersionString));
     data.emplace_back(fmt::format("Amethyst Version: {}", "1.2.1"));
     data.emplace_back("");
-    data.emplace_back(fmt::format("TPS: {:.2f}", fpsHandler->mFps));
-    data.emplace_back(fmt::format("FPS: {:.2f}", tpsHandler->mTps));
-    data.emplace_back(fmt::format("UPS: {:.2f}", upsHandler->mUps));
+    data.emplace_back(fmt::format("TPS: {:.2f}", fpsHandler->mPT));
+    data.emplace_back(fmt::format("FPS: {:.2f}", tpsHandler->mPT));
+    data.emplace_back(fmt::format("UPS: {:.2f}", upsHandler->mPT));
     data.emplace_back("");
     data.emplace_back(fmt::format("Position: [ x: {:.2f}, y: {:.2f}, z: {:.2f} ]", playerPos->x, playerPos->y, playerPos->z));
     data.emplace_back(fmt::format("Biome: Savanna"));
@@ -51,6 +51,57 @@ std::vector<std::string> F3DataBuilder::BuildControlData(ClientInstance *clientI
     data.emplace_back("Current Block: F3 + y");
     data.emplace_back("Current Entity: F3 + x");
     data.emplace_back("Other: F3 + y");
+
+    return data;
+}
+
+std::vector<std::string> F3DataBuilder::BuildModInfoData(AmethystContext *amethystContext) {
+    std::vector<std::string> data;
+
+    for (int mod_i = 0; mod_i < amethystContext->mMods.size(); ++mod_i)
+    {
+        auto mod = amethystContext->mMods.at(mod_i);
+
+        data.emplace_back(fmt::format("{}:", mod.modName));
+        data.emplace_back(fmt::format("  Name: {}", mod.metadata.name));
+        data.emplace_back(fmt::format("  Version: {}", mod.metadata.version));
+        data.emplace_back("  Author:");
+
+        for (int author_i = 0; author_i < mod.metadata.author.size(); ++author_i) {
+            auto author = mod.metadata.author.at(author_i);
+
+            if (author_i != mod.metadata.author.size() - 1) {
+                data.emplace_back(fmt::format("    {},", author));
+            } else {
+                data.emplace_back(fmt::format("    {}", author));
+            }
+        }
+
+        if (mod_i != amethystContext->mMods.size() - 1) {
+            data.emplace_back("");
+        }
+    }
+
+    return data;
+}
+
+std::vector<std::string> F3DataBuilder::BuildDimensionInfoData(ClientInstance* clientInstance) {
+    std::vector<std::string> data;
+
+    Dimension dim = clientInstance->getRegion()->getDimensionConst();
+
+    data.emplace_back("Dimension:");
+
+    data.emplace_back(fmt::format("  Name: {}", dim.mName));
+    data.emplace_back(fmt::format("  ID: {}", dim.mId));
+    data.emplace_back(fmt::format("  Min-Y: {}", dim.mHeightRange.mMinHeight));
+    data.emplace_back(fmt::format("  Max-Y: {}", dim.mHeightRange.mMaxHeight));
+    data.emplace_back(fmt::format("  SeaLevel: {}", dim.mSeaLevel));
+    data.emplace_back(fmt::format("  Ultra Warm: {}", dim.mUltraWarm));
+    data.emplace_back(fmt::format("  Has Ceiling: {}", dim.mHasCeiling));
+    data.emplace_back(fmt::format("  Has Weather: {}", dim.mHasWeather));
+    data.emplace_back(fmt::format("  Has Skylight: {}", dim.mHasSkylight));
+
 
     return data;
 }

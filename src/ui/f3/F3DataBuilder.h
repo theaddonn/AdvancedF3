@@ -3,18 +3,18 @@
 //
 #pragma once
 #include <Windows.h>
-#include <amethyst/runtime/events/EventManager.h>
-#include <amethyst/runtime/HookManager.h>
-#include <amethyst/runtime/input/InputManager.h>
-#include <amethyst/runtime/AmethystContext.h>
-#include "../../data/tps/TpsHandler.h"
-#include "../../data/fps/FpsHandler.h"
-#include "../../data/ups/UpsHandler.h"
+#include <amethyst/runtime/events/EventManager.hpp>
+#include <amethyst/runtime/HookManager.hpp>
+#include <amethyst/runtime/input/InputManager.hpp>
+#include <amethyst/runtime/AmethystContext.hpp>
+#include "../../per_tick/PerTickHandler.h"
 
 class F3DataBuilder {
 public:
-    static std::vector<std::string> BuildInfoData(ClientInstance* clientInstance, AmethystContext* amethystContext, FpsHandler* fpsHandler, TpsHandler* tpsHandlerd, UpsHandler* upsHandler);
+    static std::vector<std::string> BuildInfoData(ClientInstance* clientInstance, AmethystContext* amethystContext, PerTickHandler* fpsHandler, PerTickHandler* tpsHandlerd, PerTickHandler* upsHandler);
     static std::vector<std::string> BuildControlData(ClientInstance *clientInstance);
+    static std::vector<std::string> BuildModInfoData(AmethystContext* amethystContext);
+    static std::vector<std::string> BuildDimensionInfoData(ClientInstance* clientInstance);
 };
 
 
