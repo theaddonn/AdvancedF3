@@ -2,15 +2,15 @@
 // Created by adria on 26/03/2024.
 //
 
+#include "PerTickHandler.h"
 #include <chrono>
-#include "TpsHandler.h"
 
-void TpsHandler::start() {
+void PerTickHandler::start() {
     this->mTotalTime = std::chrono::milliseconds(0);
     this->mLastResetTime = std::chrono::system_clock::now();
 }
 
-void TpsHandler::update() {
+void PerTickHandler::update() {
     auto currentTime = std::chrono::system_clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - this->mLastResetTime);
 
@@ -24,13 +24,12 @@ void TpsHandler::update() {
         auto duration = now - this->mLastResetTime;
         auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
 
-        float tps = static_cast<float>(this->mCounter) / (static_cast<float>(millis) / 1000);
+        float fps = static_cast<float>(this->mCounter) / (static_cast<float>(millis) / 1000);
 
-        this->mTps = tps;
+        this->mPT = fps;
 
         this->mTotalTime = std::chrono::milliseconds(0);
         this->mLastResetTime = std::chrono::system_clock::now();
         this->mCounter = 0;
     }
 }
-

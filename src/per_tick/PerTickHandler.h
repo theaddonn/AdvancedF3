@@ -4,7 +4,7 @@
 #pragma once
 #include <chrono>
 
-class TpsHandler {
+class PerTickHandler {
 private:
     std::chrono::milliseconds mUpdateInterval = std::chrono::milliseconds(10000);
 
@@ -16,6 +16,6 @@ private:
 public:
     void start();
     void update();
-    float mTps;
+    float mPT;
 };
 
