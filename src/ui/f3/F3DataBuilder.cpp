@@ -30,15 +30,15 @@ std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInst
     data.emplace_back(fmt::format("FPS: {:.2f}", tpsHandler->mPT));
     data.emplace_back(fmt::format("UPS: {:.2f}", upsHandler->mPT));
     data.emplace_back("");
-    data.emplace_back(fmt::format("Position: [ x: {:.2f}, y: {:.2f}, z: {:.2f} ]", playerPos->x, playerPos->y, playerPos->z));
+    data.emplace_back(fmt::format("Position: [ X: {:.2f}, Y: {:.2f}, Z: {:.2f} ]", playerPos->x, playerPos->y, playerPos->z));
     data.emplace_back(fmt::format("Biome: Savanna"));
     data.emplace_back("");
-    data.emplace_back(fmt::format("Rotation: [ x: {:.2f}, y: {:.2f} ]", headRot.x, headRot.y));
+    data.emplace_back(fmt::format("Rotation: [ X: {:.2f}, Y: {:.2f} ]", headRot.x, headRot.y));
     data.emplace_back(fmt::format("Facing: {}", direction));
     data.emplace_back("");
-    data.emplace_back(fmt::format("Client UI Screen Size: [ x: {}, y: {} ]", clientUIScreenSize.x, clientUIScreenSize.y));
-    data.emplace_back(fmt::format("Client Screen Size: [ x: {}, y: {} ]", clientScreenSize.x, clientScreenSize.y));
-    data.emplace_back(fmt::format("Total Screen Size: [ x: {}, y: {} ]", totalScreenSize.x, totalScreenSize.y));
+    data.emplace_back(fmt::format("Client UI Screen Size: [ X: {}, Y: {} ]", clientUIScreenSize.x, clientUIScreenSize.y));
+    data.emplace_back(fmt::format("Client Screen Size: [ X: {}, Y: {} ]", clientScreenSize.x, clientScreenSize.y));
+    data.emplace_back(fmt::format("Total Screen Size: [ X: {}, Y: {} ]", totalScreenSize.x, totalScreenSize.y));
 
     return data;
 }
@@ -46,11 +46,11 @@ std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInst
 std::vector<std::string> F3DataBuilder::BuildControlData(ClientInstance *clientInstance) {
     std::vector<std::string> data;
 
-    data.emplace_back("Graph: F3 + g");
-    data.emplace_back("Chunk Borders: F3 + g");
-    data.emplace_back("Current Block: F3 + y");
-    data.emplace_back("Current Entity: F3 + x");
-    data.emplace_back("Other: F3 + y");
+    data.emplace_back("Graph: F3 + G");
+    data.emplace_back("Chunk Borders: F3 + G");
+    data.emplace_back("Current Block: F3 + Y");
+    data.emplace_back("Current Entity: F3 + X");
+    data.emplace_back("Other: F3 + Y");
 
     return data;
 }
