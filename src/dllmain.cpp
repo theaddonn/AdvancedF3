@@ -1,9 +1,8 @@
 ﻿#include "dllmain.h"
 #include "ui/f3/F3Renderer.h"
-#include "minecraft/src-client/common/client/gui/controls/ToggleComponent.hpp"
 #include "minecraft/src/common/world/level/BlockPos.hpp"
 
-bool f3_open = true;
+bool f3_open = false;
 F3Renderer* F3 = nullptr;
 int frame = 0;
 
@@ -12,8 +11,8 @@ ModFunction void Initialize(AmethystContext* ctx)
 {
     // Add a listener to key inputs for opening the f3 screen
     // https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-    //ctx->mInputManager.RegisterNewInput("use_f3", 0x72, true);
-    //ctx->mInputManager.("use_f3", &onUseF3);
+    ctx->mInputManager.RegisterNewInput("use_f3", {0x72}, true);
+    ctx->mInputManager.AddButtonDownHandler("use_f3", &onUseF3, true);
 
     F3 = new F3Renderer(ctx);
 
@@ -64,5 +63,6 @@ void onUpdate()
 
 void onUseF3(FocusImpact _focus, IClientInstance _clientInstance)
 {
+    Log::Info("F3");
     f3_open = !f3_open;
 }
