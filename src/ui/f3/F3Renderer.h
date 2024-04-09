@@ -10,9 +10,10 @@
 #include "F3State.h"
 
 class F3Renderer{
-private:
+public:
     AmethystContext* mAmethystContext = nullptr;
 
+private:
     PerTickHandler* mFpsHandler = nullptr;
     PerTickHandler* mTpsHandler = nullptr;
     PerTickHandler* mUpsHandler = nullptr;

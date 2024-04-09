@@ -5,5 +5,6 @@
 enum F3State {
     Basic,
     ModsInfo,
-    DimensionInfo
+    DimensionInfo,
+    Count
 };

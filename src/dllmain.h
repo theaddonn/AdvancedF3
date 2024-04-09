@@ -12,7 +12,19 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
+void onRegisterInputs(Amethyst::InputManager* inputManager);
+
+void onStartJoinGame(ClientInstance* instance);
+
 void afterRenderUI(ScreenView* screenView, MinecraftUIRenderContext* uiRenderContext);
 void onUpdate();
 
-void onUseF3(FocusImpact focus, IClientInstance clientInstance);
+void onF3Use(FocusImpact _focus, IClientInstance _clientInstance);
+void onF3CtrlDOWN(FocusImpact _focus, IClientInstance _clientInstance);
+void onF3CtrlUP(FocusImpact _focus, IClientInstance _clientInstance);
+
+void onF3OpenBasic(FocusImpact _focus, IClientInstance _clientInstance);
+void onF3OpenMods(FocusImpact _focus, IClientInstance _clientInstance);
+void onF3OpenDim(FocusImpact _focus, IClientInstance _clientInstance);
+
+void onF3Next(FocusImpact _focus, IClientInstance _clientInstance);

@@ -30,11 +30,13 @@ std::vector<std::string> F3DataBuilder::BuildInfoData(ClientInstance *clientInst
     data.emplace_back(fmt::format("FPS: {:.2f}", tpsHandler->mPT));
     data.emplace_back(fmt::format("UPS: {:.2f}", upsHandler->mPT));
     data.emplace_back("");
-    data.emplace_back(fmt::format("Position: [ X: {:.2f}, Y: {:.2f}, Z: {:.2f} ]", playerPos->x, playerPos->y, playerPos->z));
+    data.emplace_back(fmt::format("Position: [ X: {:.2f}, Y: {:.2f}, Z: {:.2f} ]", playerPos->x, playerPos->y - 1.62f, playerPos->z));
+    data.emplace_back(fmt::format("Dimension: {}", clientInstance->getRegion()->getDimensionConst().mName));
     data.emplace_back(fmt::format("Biome: Savanna"));
     data.emplace_back("");
     data.emplace_back(fmt::format("Rotation: [ X: {:.2f}, Y: {:.2f} ]", headRot.x, headRot.y));
     data.emplace_back(fmt::format("Facing: {}", direction));
+    data.emplace_back(fmt::format("Head-Y: {:.2f}", playerPos->y));
     data.emplace_back("");
     data.emplace_back(fmt::format("Client UI Screen Size: [ X: {}, Y: {} ]", clientUIScreenSize.x, clientUIScreenSize.y));
     data.emplace_back(fmt::format("Client Screen Size: [ X: {}, Y: {} ]", clientScreenSize.x, clientScreenSize.y));
