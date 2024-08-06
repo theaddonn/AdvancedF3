@@ -1,5 +1,4 @@
-
-reakBeforeBraces: Stroustrup
+BreakBeforeBraces: Stroustrup
 IndentWidth: 4
 AllowShortIfStatementsOnASingleLine: true
 ColumnLimit: 0
