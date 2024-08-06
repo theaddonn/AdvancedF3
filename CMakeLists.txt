@@ -33,7 +33,7 @@ file(GLOB_RECURSE ${PROJECT_NAME}_All
         ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h
 )
 
-add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_All} "src-old/dllmain.cpp" "src-old/dllmain.h" "src-old/per_tick/PerTickHandler.cpp" "src-old/per_tick/PerTickHandler.h" "src-old/ui/common/api_extension_renderer/SimpleLineRenderer.cpp" "src-old/ui/common/api_extension_renderer/SimpleLineRenderer.h" "src-old/ui/common/text_vector_renderer/TextVectorBottomLeftRenderer.cpp" "src-old/ui/common/text_vector_renderer/TextVectorBottomRightRenderer.cpp" "src-old/ui/common/text_vector_renderer/TextVectorRenderer.h" "src-old/ui/common/text_vector_renderer/TextVectorTopLeftRenderer.cpp" "src-old/ui/common/text_vector_renderer/TextVectorTopRightRenderer.cpp" "src-old/ui/config/UiConfig.cpp" "src-old/ui/config/UiConfig.h" "src-old/ui/f3/F3DataBuilder.cpp" "src-old/ui/f3/F3DataBuilder.h" "src-old/ui/f3/F3Renderer.cpp" "src-old/ui/f3/F3Renderer.h" "src-old/ui/f3/F3State.h")
+add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_All})
 
 # Pass mod options to the source code
 target_compile_definitions(${PROJECT_NAME} PRIVATE MOD_VERSION="${MOD_VERSION}")
