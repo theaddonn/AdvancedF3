@@ -5,7 +5,7 @@ void F3Renderer::RenderTopLeft(MinecraftUIRenderContext& ctx, std::vector<std::s
 {
     for (size_t i = 0; i < text.size(); i++) {
 
-        RectangleArea rect(10, 1000, (i+1)*10);
+        RectangleArea rect(10, 1000, (i + 1) * (10 + 2));
 
         TextMeasureData textData(1.0f, 0, true, true, false);
         CaretMeasureData caretData(0, true);
