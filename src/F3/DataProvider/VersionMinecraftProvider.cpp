@@ -6,7 +6,7 @@ std::string VersionMinecraftProvider::obtainData()
 {
     [[unlikely]]
     if (!this->mText.has_value()) {
-        this->mText = fmt::format("Minecraft Version: {}", Amethyst::MinecraftPackageInfo().mVersion.mFullVersionString);
+        this->mText = Amethyst::MinecraftPackageInfo().mVersion.mFullVersionString;
     }
 
     return this->mText.value();

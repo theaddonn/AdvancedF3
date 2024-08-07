@@ -5,6 +5,7 @@
 std::vector<std::string> DimensionScreenProvider::obtainData()
 {
     return {
-        fmt::format("{}", this->mDimensionIdProvider.obtainData()),
+        fmt::format("Dimension Name: {}", this->mDimensionNameProvider.obtainData()),
+        fmt::format("Dimension ID: {}", this->mDimensionIdProvider.obtainData()),
     };
 }

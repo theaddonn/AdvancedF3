@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
+#include <string>
 #include "../VersionAmethystProvider.hpp"
-#include "../VersionMinecraftProvider.cpp"
+#include "../VersionMinecraftProvider.hpp"
 
 class BasicScreenProvider {
 private:

@@ -6,7 +6,7 @@ std::string VersionAmethystProvider::obtainData()
 {
     [[unlikely]]
     if (!this->mText.has_value()) {
-        this->mText = fmt::format("Amethyst Version: {}", *Amethyst::GetContext().getAmethystVersion());
+        this->mText = *Amethyst::GetContext().getAmethystVersion();
     }
 
     return this->mText.value();
