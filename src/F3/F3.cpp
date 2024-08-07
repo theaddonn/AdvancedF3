@@ -1,17 +1,31 @@
 #include "F3.hpp"
-#include "minecraft/src-deps/core/math/Color.cpp"
+#include "Render/F3Renderer.hpp"
+
+F3::F3()
+{
+    this->mMode = F3Mode::Basic;
+}
 
 void F3::Render(MinecraftUIRenderContext& ctx)
 {
-    RectangleArea area(10, 100, 10, 100);
-
-    std::string text = "Hello World!";
-
-    TextMeasureData textData(1.0f, 0, false, true, false);
-
-    CaretMeasureData caretData(0, true);
-
-    ctx.drawDebugText(&area, &text, &mce::Color::WHITE, 1.0f, ui::TextAlignment::Center, &textData, &caretData);
+    switch (this->mMode) {
+        case Basic:
+            this->_RenderBasic(ctx);
+            break;
+        
+    } 
 
     ctx.flushText(1.0f);
+}
+
+void F3::_RenderBasic(MinecraftUIRenderContext& ctx)
+{
+    std::vector<std::string> texts = {
+        this->mVersionAmethystProvider.obtainData(),
+        this->mVersionMinecraftProvider.obtainData(),
+        "",
+
+        };
+
+    F3Renderer::RenderTopLeft(ctx, texts);
 }

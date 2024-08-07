@@ -1,7 +1,7 @@
 ﻿#include "dllmain.hpp"
 #include "F3/F3.hpp"
 
-F3 f3;
+F3* f3;
 
 ModFunction void Initialize(AmethystContext& ctx)
 {
@@ -9,9 +9,13 @@ ModFunction void Initialize(AmethystContext& ctx)
     Amethyst::InitializeAmethystMod(ctx);
     
     Amethyst::GetEventBus().AddListener<AfterRenderUIEvent>(onRenderUI);
+
+    f3 = new F3;
 }
 
 void onRenderUI(AfterRenderUIEvent& event)
 {
-    f3.Render(event.ctx);
+    if (f3 != nullptr) {
+        f3->Render(event.ctx);
+    }
 }
