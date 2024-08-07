@@ -2,7 +2,7 @@
 #include <amethyst/runtime/AmethystContext.hpp>
 #include <amethyst/runtime/ModContext.hpp>
 
-std::string& VersionMinecraftProvider::obtainData()
+std::string VersionMinecraftProvider::obtainData()
 {
     [[unlikely]]
     if (!this->mText.has_value()) {

@@ -7,5 +7,5 @@ private:
     std::optional<std::string> mText;
 
 public:
-    std::string& obtainData();
+    std::string obtainData();
 };
