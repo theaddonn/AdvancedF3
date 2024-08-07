@@ -15,6 +15,16 @@ void F3::Render(MinecraftUIRenderContext& ctx)
     ctx.flushText(1.0f);
 }
 
+void F3::NextMode()
+{
+    this->mMode = static_cast<F3Mode>((static_cast<int>(this->mMode) + 1) % static_cast<int>(F3Mode::Count));
+}
+
+void F3::PreviousMode()
+{
+    this->mMode = static_cast<F3Mode>((static_cast<int>(this->mMode) - 1 + static_cast<int>(F3Mode::Count)) % static_cast<int>(F3Mode::Count));
+}
+
 void F3::_RenderBasic(MinecraftUIRenderContext& ctx)
 {
     F3Renderer::RenderTopLeft(ctx, this->mBasicScreenProvider.obtainData());

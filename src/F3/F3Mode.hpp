@@ -3,4 +3,5 @@
 enum F3Mode {
 	Basic,
 	Dimension,
+	Count
 };

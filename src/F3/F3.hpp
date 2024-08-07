@@ -6,13 +6,16 @@
 
 class F3 {
 private:
-    F3Mode mMode = F3Mode::Basic;
+    F3Mode mMode = F3Mode::Dimension;
 
     BasicScreenProvider mBasicScreenProvider;
     DimensionScreenProvider mDimensionScreenProvider;
 
 public:
     void Render(MinecraftUIRenderContext& ctx);
+
+    void NextMode();
+    void PreviousMode();
 
 private:
     void _RenderBasic(MinecraftUIRenderContext& ctx);
