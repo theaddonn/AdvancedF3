@@ -7,7 +7,8 @@
 
 std::vector<std::string> DimensionScreenProvider::obtainData()
 {
-    const Dimension* dimension = &Amethyst::GetContext().mClientInstance->getRegion()->getDimensionConst();
+    BlockSource* region = Amethyst::GetContext().mClientInstance->getRegion();
+    const Dimension* dimension = &region->getDimensionConst();
     auto spawnPos = dimension->getSpawnPos();
 
     const Level& level = dimension->getLevelConst();
@@ -53,5 +54,11 @@ std::vector<std::string> DimensionScreenProvider::obtainData()
         fmt::format("Level HasPlatformBroadcastIntent: {}", level.hasPlatformBroadcastIntent()),
         fmt::format("Level HasXBLBroadcast: {}", level.hasXBLBroadcast()),
         fmt::format("Level HasXBLBroadcastIntent: {}", level.hasXBLBroadcastIntent()),
+        "",
+        "",
+        fmt::format("Region CanDoBlockDrops: {}", region->canDoBlockDrops()),
+        fmt::format("Region CanDoContainedItemDrops: {}", region->canDoContainedItemDrops()),
+        fmt::format("Region AllowUnpopulatedChunks: {}", region->mAllowUnpopulatedChunks),
+        fmt::format("Region CheckValidity: {}", region->mCheckValidity),
     };
 }
