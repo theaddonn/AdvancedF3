@@ -4,7 +4,7 @@
 #include "../DimensionIdProvider.hpp"
 #include "../DimensionNameProvider.hpp"
 
-class DimensionScreenProvider {
+class WorldScreenProvider {
 private:
     DimensionIdProvider mDimensionIdProvider;
     DimensionNameProvider mDimensionNameProvider;

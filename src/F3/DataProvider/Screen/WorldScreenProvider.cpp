@@ -1,11 +1,11 @@
-#include "DimensionScreenProvider.hpp"
+#include "WorldScreenProvider.hpp"
 #include <amethyst/runtime/AmethystContext.hpp>
 #include <amethyst/runtime/ModContext.hpp>
 #include <minecraft/src/common/world/level/BlockSource.hpp>
 #include <minecraft/src/common/world/level/dimension/Dimension.hpp>
 #include <minecraft/src/common/world/level/BlockSource.hpp>
 
-std::array<std::vector<std::string>, 2> DimensionScreenProvider::obtainData()
+std::array<std::vector<std::string>, 2> WorldScreenProvider::obtainData()
 {
     BlockSource* region = Amethyst::GetContext().mClientInstance->getRegion();
     const Dimension* dimension = &region->getDimensionConst();

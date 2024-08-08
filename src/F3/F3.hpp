@@ -2,14 +2,14 @@
 #include "F3Mode.hpp"
 #include "minecraft/src-client/common/client/renderer/screen/MinecraftUIRenderContext.hpp"
 #include "DataProvider/Screen/BasicScreenProvider.hpp"
-#include "DataProvider/Screen/DimensionScreenProvider.hpp"
+#include "DataProvider/Screen/WorldScreenProvider.hpp"
 
 class F3 {
 private:
-    F3Mode mMode = F3Mode::Dimension;
+    F3Mode mMode = F3Mode::World;
 
     BasicScreenProvider mBasicScreenProvider;
-    DimensionScreenProvider mDimensionScreenProvider;
+    WorldScreenProvider mDimensionScreenProvider;
 
 public:
     void Render(MinecraftUIRenderContext& ctx);
@@ -19,5 +19,5 @@ public:
 
 private:
     void _RenderBasic(MinecraftUIRenderContext& ctx);
-    void _RenderDimension(MinecraftUIRenderContext& ctx);
+    void _RenderWorld(MinecraftUIRenderContext& ctx);
 };

@@ -7,8 +7,8 @@ void F3::Render(MinecraftUIRenderContext& ctx)
         case Basic:
             this->_RenderBasic(ctx);
             break;
-        case Dimension:
-            this->_RenderDimension(ctx);
+        case World:
+            this->_RenderWorld(ctx);
             break;
     } 
 
@@ -30,7 +30,7 @@ void F3::_RenderBasic(MinecraftUIRenderContext& ctx)
     F3Renderer::RenderTopLeft(ctx, this->mBasicScreenProvider.obtainData());
 }
 
-void F3::_RenderDimension(MinecraftUIRenderContext& ctx)
+void F3::_RenderWorld(MinecraftUIRenderContext& ctx)
 {
     std::array<std::vector<std::string>, 2> worldInfo = this->mDimensionScreenProvider.obtainData();
 
