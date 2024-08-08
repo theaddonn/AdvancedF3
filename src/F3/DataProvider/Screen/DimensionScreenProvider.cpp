@@ -5,15 +5,15 @@
 #include <minecraft/src/common/world/level/dimension/Dimension.hpp>
 #include <minecraft/src/common/world/level/BlockSource.hpp>
 
-std::vector<std::string> DimensionScreenProvider::obtainData()
+std::array<std::vector<std::string>, 2> DimensionScreenProvider::obtainData()
 {
     BlockSource* region = Amethyst::GetContext().mClientInstance->getRegion();
     const Dimension* dimension = &region->getDimensionConst();
-    auto spawnPos = dimension->getSpawnPos();
+    BlockPos spawnPos = dimension->getSpawnPos();
 
     const Level& level = dimension->getLevelConst();
 
-    return {
+    std::vector<std::string> leftSide = {
         fmt::format("Dimension Name: {}", dimension->mName),
         fmt::format("Dimension ID: {}", this->mDimensionIdProvider.obtainData()),
         "",
@@ -35,6 +35,9 @@ std::vector<std::string> DimensionScreenProvider::obtainData()
         fmt::format("Dimension CIRCUIT_TICK_RATE: {}", dimension->CIRCUIT_TICK_RATE),
         "",
         "",
+    };
+
+    std::vector<std::string> rightSide = {
         fmt::format("Level IsClientSide: {}", level.isClientSide),
         fmt::format("Level IsEditorWorld: {}", level.isEditorWorld()),
         fmt::format("Level IsEdu: {}", level.isEdu()),
@@ -60,5 +63,10 @@ std::vector<std::string> DimensionScreenProvider::obtainData()
         fmt::format("Region CanDoContainedItemDrops: {}", region->canDoContainedItemDrops()),
         fmt::format("Region AllowUnpopulatedChunks: {}", region->mAllowUnpopulatedChunks),
         fmt::format("Region CheckValidity: {}", region->mCheckValidity),
+    };
+
+    return {
+        leftSide,
+        rightSide
     };
 }

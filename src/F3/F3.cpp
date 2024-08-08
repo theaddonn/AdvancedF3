@@ -32,5 +32,8 @@ void F3::_RenderBasic(MinecraftUIRenderContext& ctx)
 
 void F3::_RenderDimension(MinecraftUIRenderContext& ctx)
 {
-    F3Renderer::RenderTopLeft(ctx, this->mDimensionScreenProvider.obtainData());
+    std::array<std::vector<std::string>, 2> worldInfo = this->mDimensionScreenProvider.obtainData();
+
+    F3Renderer::RenderTopLeft(ctx, worldInfo[0]);
+    F3Renderer::RenderTopRight(ctx, worldInfo[1]);
 }

@@ -10,5 +10,5 @@ private:
     DimensionNameProvider mDimensionNameProvider;
 
 public:
-    std::vector<std::string> obtainData();
+    std::array<std::vector<std::string>, 2> obtainData();
 };
