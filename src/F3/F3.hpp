@@ -6,7 +6,7 @@
 
 class F3 {
 private:
-    F3Mode mMode = F3Mode::World;
+    F3Mode mMode = F3Mode::Basic;
 
     BasicScreenProvider mBasicScreenProvider;
     WorldScreenProvider mDimensionScreenProvider;
