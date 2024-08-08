@@ -18,7 +18,7 @@ std::array<std::vector<std::string>, 2> WorldScreenProvider::obtainData()
         fmt::format("Dimension ID: {}", this->mDimensionIdProvider.obtainData()),
         "",
         fmt::format("Dimension DefaultBiome: {}", dimension->getDefaultBiome().getString()),
-        fmt::format("Dimension SpawnPos [X: {}; Y: {}; Z: {}]", spawnPos.x, spawnPos.y, spawnPos.z),
+        fmt::format("Dimension SpawnPos: [X: {}; Y: {}; Z: {}]", spawnPos.x, spawnPos.y, spawnPos.z),
         fmt::format("Dimension HasGround: {}", dimension->hasGround()),
         fmt::format("Dimension HasPrecipitationFog: {}", dimension->hasPrecipitationFog()),
         fmt::format("Dimension IsDay: {}", dimension->isDay()),
