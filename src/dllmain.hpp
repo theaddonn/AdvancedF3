@@ -17,6 +17,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 
 void onRenderUI(AfterRenderUIEvent& event);
 void onRegisterInputs(RegisterInputsEvent event);
+void onStartJoinGame(OnStartJoinGameEvent event);
 
 void buttonHandlerF3(FocusImpact focus, IClientInstance& client);
 void buttonHandlerF3Next(FocusImpact focus, IClientInstance& client);

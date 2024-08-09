@@ -18,6 +18,7 @@ ModFunction void Initialize(AmethystContext& ctx)
     // Add event listeners
     Amethyst::GetEventBus().AddListener<AfterRenderUIEvent>(onRenderUI);
     Amethyst::GetEventBus().AddListener<RegisterInputsEvent>(onRegisterInputs);
+    Amethyst::GetEventBus().AddListener<OnStartJoinGameEvent>(onStartJoinGame);
 }
 
 void onRenderUI(AfterRenderUIEvent& event)
@@ -32,10 +33,13 @@ void onRegisterInputs(RegisterInputsEvent event)
     event.inputManager.RegisterNewInput("f3", {VK_F3 /* F3 */});
     event.inputManager.RegisterNewInput("f3_next", {VK_RIGHT /*Right arrow*/});
     event.inputManager.RegisterNewInput("f3_prev", {VK_LEFT /*Left arrow*/});
+}
 
-    event.inputManager.AddButtonDownHandler("f3", buttonHandlerF3, false);
-    event.inputManager.AddButtonDownHandler("f3_next", buttonHandlerF3Next, false);
-    event.inputManager.AddButtonDownHandler("f3_prev", buttonHandlerF3Prev, false);
+void onStartJoinGame(OnStartJoinGameEvent event)
+{
+    Amethyst::GetContext().mInputManager->AddButtonDownHandler("f3", buttonHandlerF3, false);
+    Amethyst::GetContext().mInputManager->AddButtonDownHandler("f3_next", buttonHandlerF3Next, false);
+    Amethyst::GetContext().mInputManager->AddButtonDownHandler("f3_prev", buttonHandlerF3Prev, false);
 }
 
 void buttonHandlerF3(FocusImpact focus, IClientInstance& client)
