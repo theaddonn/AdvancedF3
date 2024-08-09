@@ -4,14 +4,17 @@
 #include <minecraft/src/common/world/level/BlockSource.hpp>
 #include <minecraft/src/common/world/level/dimension/Dimension.hpp>
 #include <minecraft/src/common/world/level/BlockSource.hpp>
+#include "minecraft/src-client/common/client/player/LocalPlayer.hpp"
+#include "minecraft/src/common/world/phys/Vec2.hpp"
 
 std::array<std::vector<std::string>, 2> WorldScreenProvider::obtainData()
 {
     BlockSource* region = Amethyst::GetContext().mClientInstance->getRegion();
     const Dimension* dimension = &region->getDimensionConst();
+    const Level& level = dimension->getLevelConst();
     BlockPos spawnPos = dimension->getSpawnPos();
 
-    const Level& level = dimension->getLevelConst();
+    LocalPlayer* player = Amethyst::GetContext().mClientInstance->getLocalPlayer();
 
     std::vector<std::string> leftSide = {
         fmt::format("Dimension Name: {}", dimension->mName),

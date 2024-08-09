@@ -4,11 +4,14 @@
 void F3::Render(MinecraftUIRenderContext& ctx)
 {
     switch (this->mMode) {
-        case Basic:
+        case BasicMode:
             this->_RenderBasic(ctx);
             break;
-        case World:
+        case WorldMode:
             this->_RenderWorld(ctx);
+            break;
+        case AmethystMode:
+            this->_RenderAmethyst(ctx);
             break;
     } 
 
@@ -20,7 +23,7 @@ void F3::NextMode()
     this->mMode = static_cast<F3Mode>((static_cast<int>(this->mMode) + 1) % static_cast<int>(F3Mode::Count));
 }
 
-void F3::PreviousMode()
+void F3::PrevMode()
 {
     this->mMode = static_cast<F3Mode>((static_cast<int>(this->mMode) - 1 + static_cast<int>(F3Mode::Count)) % static_cast<int>(F3Mode::Count));
 }
@@ -36,4 +39,9 @@ void F3::_RenderWorld(MinecraftUIRenderContext& ctx)
 
     F3Renderer::RenderTopLeft(ctx, worldInfo[0]);
     F3Renderer::RenderTopRight(ctx, worldInfo[1]);
+}
+
+void F3::_RenderAmethyst(MinecraftUIRenderContext& ctx)
+{
+    F3Renderer::RenderTopLeft(ctx, this->mAmethystScreenProvider.obtainData());
 }
