@@ -4,6 +4,7 @@
 #include "DataProvider/Screen/BasicScreenProvider.hpp"
 #include "DataProvider/Screen/WorldScreenProvider.hpp"
 #include "DataProvider/Screen/AmethystScreenProvider.hpp"
+#include "DataProvider/Screen/HoverScreenProvider.hpp"
 
 class F3 {
 private:
@@ -12,6 +13,7 @@ private:
     BasicScreenProvider mBasicScreenProvider;
     WorldScreenProvider mDimensionScreenProvider;
     AmethystScreenProvider mAmethystScreenProvider;
+    HoverScreenProvider mHoverScreenProvider;
 
 public:
     void Render(MinecraftUIRenderContext& ctx);
@@ -23,4 +25,5 @@ private:
     void _RenderBasic(MinecraftUIRenderContext& ctx);
     void _RenderWorld(MinecraftUIRenderContext& ctx);
     void _RenderAmethyst(MinecraftUIRenderContext& ctx);
+    void _RenderHover(MinecraftUIRenderContext& ctx);
 };
