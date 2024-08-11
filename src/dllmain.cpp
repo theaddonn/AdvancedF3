@@ -11,7 +11,7 @@ ModFunction void Initialize(AmethystContext& ctx)
 {
     // Initialize Amethyst mod backend
     Amethyst::InitializeAmethystMod(ctx);
-
+    
     // Enable input system
     Amethyst::GetContext().mFeatures->enableInputSystem = true;
     
