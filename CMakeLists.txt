@@ -4,7 +4,7 @@ set(MOD_VERSION "1.0.0")
 set(MOD_AUTHOR "Adrian8115")
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /await")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /await /utf-8")
 
 # Amethyst Minecraft Folder
 if (CI_CD_BUILD)
